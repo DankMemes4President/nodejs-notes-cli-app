@@ -5,6 +5,8 @@ const addNote = (title, body) => {
     const notes = loadNotes()
     const duplicateNote = notes.find((note) => note.title === title)
 
+    debugger
+
     if (!duplicateNote) {
         notes.push({
             title: title,
@@ -18,7 +20,7 @@ const addNote = (title, body) => {
 
 }
 
-const saveNotes = (notes) => {
+const saveNotes = (notes) =>    {
     const dataJson = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJson)
 }
@@ -48,7 +50,7 @@ const removeNote = (title) => {
 // list
 const listNotes = () => {
     console.log(chalk.inverse("Your Notes:"))
-    notes = loadNotes()
+    const notes = loadNotes()
     notes.forEach((note) => {
         console.log(note.title)
     })
@@ -57,8 +59,8 @@ const listNotes = () => {
 
 // read 
 const readNote = (title) => {
-    notes = loadNotes()
-    note = notes.find((note) => note.title === title)
+    const notes = loadNotes()
+    const note = notes.find((note) => note.title === title)
     if (note) {
         console.log(chalk.inverse.blue.bold(note.title))
         console.log(note.body)
